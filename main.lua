@@ -34,20 +34,19 @@ local function EventHandler(self, event, message, author)
    end
 
    if message:lower():find("grpf")  then
-    playerInfo = {" ", " ", " "}
+    playerInfo = { }
     --Trigger keyword found in message, send back response
-    count = 0
+    count = 1
     for info in string.gmatch(message, "%S+") do
-		SendChatMessage("wowowo", "WHISPER", nil, author)
-        if info:lower() == "grpf" then
-            break
-        else
-            playerInfo.insert(count, info)
+
+        --TODO: add author to the mix in some way so we dont overwrite with multiple /w
+        if info:lower() ~= "grpf" then
+	    table.insert(playerInfo, count, tostring(info)) --insert the current information into our table at the current index of count
             count = count + 1
         end
 
     end 
-    
+    SendChatMessage(playerInfo[1], "WHISPER", nil, author)
  end
 end
 
