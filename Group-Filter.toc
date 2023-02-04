@@ -1,0 +1,7 @@
+## Interface: 30401
+## Title: Group-Filter
+## Author: Vacuus-benediction
+## Version: 0.1
+
+main.lua
+ui.xml
